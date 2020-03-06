@@ -1,0 +1,27 @@
+{
+  "name": "pokemoodproject",
+  "version": "1.0.0",
+  "description": "PokéMood is an app created by Melanie Rogoff, Brandon Perez, Stephen Shepherd, and Christopher (Hunter) Matthews that enables users to see Pokémon based on their mood, as well as discover more information about particular Pokémon.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MelanieRogoff/PokeMood.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MelanieRogoff/PokeMood/issues"
+  },
+  "homepage": "https://github.com/MelanieRogoff/PokeMood#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.5"
+  }
+}
