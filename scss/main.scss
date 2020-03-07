@@ -45,28 +45,20 @@ body {
         background-position:0% 50%
     }
   }
-  
+
 .transition-fade {
     opacity: 1;
     transition: 500ms;
     transform: translateX(0);
+    transform-origin: left;
 }
 
 html.is-animating .transition-fade {
     opacity: 1;
+    transform: translateX(100%);
 }
 
 html.is-leaving .transition-fade {
     opacity: 0;
+    transform: translateX(0);
 }
-// .test-class{
-
-//     h1{
-//         color: pink;
-//     }
-
-//     a{
-//         font-size: 10000px;
-//         color:red;
-//     }
-// }
