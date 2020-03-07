@@ -1,6 +1,5 @@
 const bcrypt = require("bcryptjs"); //this is an npm for PW hashing
 
-
 //Create the User model
 module.exports = function(sequelize, DataTypes) {
     const User = sequelize.define("User", {
