@@ -1,3 +1,6 @@
+const bcrypt = require("bcryptjs"); //this is an npm for PW hashing
+
+//Create the User model
 module.exports = function(sequelize, DataTypes) {
     const User = sequelize.define("User", {
       id: {
@@ -8,7 +11,11 @@ module.exports = function(sequelize, DataTypes) {
       }, 
       user_name: {
           type: DataTypes.STRING,
-          allowNull: false
+          allowNull: false,
+          unique: true,
+          validate: {
+              isUserName: true
+          }
       },
       password: {
           type: DataTypes.STRING,
@@ -19,9 +26,18 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false
       }
     });
-    return User;
+ // This checks if an unhashed PW from user can be compared to hashed PW we stored 
+ User.prototype.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+  };
+  // Before User is created, automatically hash their PW
+  User.addHook("beforeCreate", function(user) {
+    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+  });
+  return User;
 };
 
+//Create the Pokemon model
 module.exports = function(sequelize, DataTypes) {
     const Pokemon = sequelize.define("Pokemon", {
         name: {

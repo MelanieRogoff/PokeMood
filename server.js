@@ -1,24 +1,28 @@
+// Requiring necessary npm packages
 const express = require("express");
-const db = require("./models"); //get the model for syncing
+const session = require("express-session");
+// Requiring passport as we've configured it
+const passport = require("./config/passport");
 
-// Setting up port 
+// Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8080;
+const db = require("./models");
 
-//Start Express:
+// Creating express app and configuring middleware needed for authentication
 const app = express();
-
-// Express.static middleware serves static content from "public" directory in app.
-app.use(express.static("public"));
-
-// Sets up Express to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static("public"));
+// We need to use sessions to keep track of our user's login status
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
-//Setting up the routes and then running app.use on them
+// Requiring our routes
 require("./routes/html-routes.js");
 require("./routes/api-routes.js");
 
-// Syncing the database and logging a message to the user upon success
+// Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
