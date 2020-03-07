@@ -1,4 +1,43 @@
+/*# sourceMappingURL=main.css.map */
 body {
+  background: linear-gradient(136deg, #e7d616, #de2720);
+   background-size: 400% 400%;
+   -webkit-animation: AnimationName 45s ease infinite;
+   -moz-animation: AnimationName 45s ease infinite;
+   animation: AnimationName 45s ease infinite;
+}
+@-webkit-keyframes AnimationName {
+   0%{
+      background-position:0% 50%
+  }
+   50%{
+      background-position:100% 50%
+  }
+   100%{
+      background-position:0% 50%
+  }
+}
+@-moz-keyframes AnimationName {
+   0%{
+      background-position:0% 50%
+  }
+   50%{
+      background-position:100% 50%
+  }
+   100%{
+      background-position:0% 50%
+  }
+}
+@keyframes AnimationName {
+   0%{
+      background-position:0% 50%
+  }
+   50%{
+      background-position:100% 50%
+  }
+   100%{
+      background-position:0% 50%
+  }
   background-color: grey;
 }
 
@@ -17,4 +56,3 @@ html.is-animating .transition-fade {
 html.is-leaving .transition-fade {
   opacity: 0;
 }
-/*# sourceMappingURL=main.css.map */
