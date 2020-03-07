@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PokeMood</title>
+    <title>Mood Selection</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -17,45 +17,36 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="/node_modules/swup/dist/swup.min.js"></script>
+    <script defer src="/script.js"></script>
+    <link rel="stylesheet" href="/dist/css/main.css">
 </head>
 
 
 <body>
 
+    <body>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/index.html">Home</a>
+                </li>
+                <li>
+                    <a href="/mood.html">Mood</a>
+                </li>
+            </ul>
+        </nav>
 
-    <header>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
-                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <main id="swup" class="transition-fade">
 
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="mood.html" tabindex="-1" aria-disabled="true">Mood</a>
-                    </li>
-                </ul>
+            <a href="/index.html" class="btn btn-warning" role="button">Choose a New Mood</a>
 
-
-    </header>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
+        </main>
 
 
 
+    </body>
 
-
-
-
-            </div>
-        </div>
-    </div>
 </body>
 
 </html>
