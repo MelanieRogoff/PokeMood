@@ -6,6 +6,8 @@ body {
      -moz-animation: AnimationName 45s ease infinite;
      animation: AnimationName 45s ease infinite;
   }
+
+
   @-webkit-keyframes AnimationName {
      0%{
         background-position:0% 50%
@@ -17,6 +19,8 @@ body {
         background-position:0% 50%
     }
   }
+
+
   @-moz-keyframes AnimationName {
      0%{
         background-position:0% 50%
@@ -28,6 +32,8 @@ body {
         background-position:0% 50%
     }
   }
+
+
   @keyframes AnimationName {
      0%{
         background-position:0% 50%
@@ -38,9 +44,8 @@ body {
      100%{
         background-position:0% 50%
     }
-body {background-color: grey;
-}
-
+  }
+  
 .transition-fade {
     opacity: 1;
     transition: 500ms;
@@ -54,3 +59,14 @@ html.is-animating .transition-fade {
 html.is-leaving .transition-fade {
     opacity: 0;
 }
+// .test-class{
+
+//     h1{
+//         color: pink;
+//     }
+
+//     a{
+//         font-size: 10000px;
+//         color:red;
+//     }
+// }
