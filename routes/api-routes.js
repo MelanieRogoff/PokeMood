@@ -4,11 +4,6 @@ const db = require("../models");
 // Routes
 module.exports = function(app) {
 
-    app.get("/", function(req, res) {
-        
-      });
-
-
   app.get("/api/moods", function(req, res) {
     db.User.findAll({}).then(function(dbUser) {
       res.json(dbUser);

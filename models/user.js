@@ -36,5 +36,3 @@ module.exports = function(sequelize, DataTypes) {
   });
   return User;
 };
-
-//Create the Pokemon model
