@@ -32,10 +32,7 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
-<<<<<<< HEAD
     "sass": "^1.26.2",
-=======
->>>>>>> 8dc1564ba31df8bb3d61d0bc7072166ee2f53497
     "sequelize": "^5.21.5",
     "swup": "^2.0.9"
   }
