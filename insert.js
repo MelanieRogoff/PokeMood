@@ -2,13 +2,15 @@ const db = require('./models'); //index.js in models is what will make everythin
 
 console.log(db.Pokemon); // this is the pokemon model. 
 
+//Need to do node insert.js to put this in the table
+
 db.Pokemon.bulkCreate([
 {
     name:'Pikachu',
     mood:'Happy'
 },
 {
-    name:'Mewtwo',
+    name:'Ditto',
     mood:'Angry'
 },
 {
@@ -16,7 +18,7 @@ db.Pokemon.bulkCreate([
     mood: 'Tired'
 },
 { 
-    name: 'Charizard',
+    name: 'Fearow',
     mood: 'Angry'
 },
 {
@@ -44,7 +46,7 @@ db.Pokemon.bulkCreate([
     mood: 'Happy'
 },
 {
-    name: 'Tangela',
+    name: 'Dugtrio',
     mood: 'Confused'
 },
 {
@@ -52,7 +54,7 @@ db.Pokemon.bulkCreate([
     mood: 'Sad'
 },
 {
-    name: 'Weezing',
+    name: 'Haunter',
     mood: 'Sad'
 },
 {
@@ -60,7 +62,7 @@ db.Pokemon.bulkCreate([
     mood: 'Tired'
 },
 {
-    name: 'Weepinbell',
+    name: 'Sandshrew',
     mood: 'Hungry'
 },
 {
@@ -72,7 +74,7 @@ db.Pokemon.bulkCreate([
     mood: 'Tired'
 },
 {
-    name: 'Hitmonchan',
+    name: 'Butterfree',
     mood: 'Hungry'
 }
 ]).then(() => {
