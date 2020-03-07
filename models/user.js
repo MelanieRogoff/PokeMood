@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
     const User = sequelize.define("User", {
       id: {
-          type: sequelize.INTEGER,
+          type: DataTypes.INTEGER,
           autoIncrement: true,
           allowNull: false,
           primaryKey: true
@@ -24,18 +24,14 @@ module.exports = function(sequelize, DataTypes) {
 
 module.exports = function(sequelize, DataTypes) {
     const Pokemon = sequelize.define("Pokemon", {
-        id: {
-            type: sequelize.INTEGER,
-            autoIncrement: true,
-            allowNull: false,
-            primaryKey: true
-        },
         name: {
             type: DataTypes.STRING,
             allowNull: false
         },
         mood: {
-            
+           type: DataTypes.STRING,
+           allowNull: false 
         }
-    })
+    });
+    return Pokemon;
 }
