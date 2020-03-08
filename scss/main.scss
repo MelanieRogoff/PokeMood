@@ -1,5 +1,15 @@
 body {
-    background-color: grey;
+    background: linear-gradient(136deg, #e7d616, #de2720);
+    background-size: 400% 400%;
+}
+
+.card-header {
+    text-align: center;
+    background: linear-gradient(180deg, white, orange);
+}
+
+.card-body {
+    background: linear-gradient(180deg, orange, white);
 }
 
 .transition-fade {

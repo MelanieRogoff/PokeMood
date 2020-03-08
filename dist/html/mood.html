@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="/axioscall.js"></script>
     <script defer src="/node_modules/swup/dist/swup.min.js"></script>
     <script defer src="/dist/js/script.js"></script>
     <link rel="stylesheet" href="/dist/css/main.css">
@@ -26,22 +27,25 @@
 <body>
 
     <body>
-        <nav>
-        </nav>
 
         <main id="swup" class="transition-fade">
+            <div class="text-center">
+            <a href="/index.html" class="btn btn-warning" role="button">PokeMood Home</a>
+        </div>
+            <div class="card">
+                <h1 class="card-header">Choose a Mood!</h1>
+                <div class="card-body">
+                    <div class="text-center">
+                        <a href="/dist/html/pokemon.html" class="btn btn-success" id="get" role="button">Happy</a>
+                        <a href="/dist/html/pokemon.html" class="btn btn-danger" role="button">Angry</a>
+                        <a href="/dist/html/pokemon.html" class="btn btn-warning" role="button">Tired</a>
+                        <a href="/dist/html/pokemon.html" class="btn btn-primary" role="button">Confused</a>
+                        <a href="/dist/html/pokemon.html" class="btn btn-dark" role="button">Sad</a>
+                        <a href="/dist/html/pokemon.html" class="btn btn-info" role="button">Hungry</a>
+                    </div>
 
 
-            <a href="/index.html" class="btn btn-warning" role="button">Home</a>
 
-            <ul style="list-style-type: none;">
-                <li><a href="/dist/html/pokemon.html" class="btn btn-success" role="button">Happy</a></li>
-                <li><a href="/dist/html/pokemon.html" class="btn btn-danger" role="button">Angry</a></li>
-                <li><a href="/dist/html/pokemon.html" class="btn btn-warning" role="button">Tired</a></li>
-                <li><a href="/dist/html/pokemon.html" class="btn btn-primary" role="button">Confused</a></li>
-                <li><a href="/dist/html/pokemon.html" class="btn btn-dark" role="button">Sad</a></li>
-                <li><a href="/dist/html/pokemon.html" class="btn btn-info" role="button">Hungry</a></li>
-            </ul>
 
         </main>
 
