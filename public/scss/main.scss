@@ -1,7 +1,18 @@
+$colors: (
+    primary: red,
+    secondary: orange,
+    accent: yellow,
+    accent2: white,
+    gradient1: linear-gradient(136deg, #e7d616, #de2720),
+    gradient2: linear-gradient(136deg, purple, white)
+);
+
+
 body {
-    background: linear-gradient(136deg, #e7d616, #de2720);
+    background: map-get($colors, gradient1);
     background-size: 400% 400%;
 }
+
 
 .card-header {
     text-align: center;
