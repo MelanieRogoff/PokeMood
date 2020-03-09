@@ -1,12 +1,15 @@
-const path = require("path");
-
+const path = require('path');
+// Routes
+// =============================================================
 module.exports = function(app) {
-  app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../index.html"));
+  app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/html/index.html"));
+});
+  app.get('/mood', function(req, res) {
+    res.sendFile(path.join(__dirname, '../public/html/mood.html'));
   });
 
-  app.get("/moods", function(req, res) {
-    res.sendFile(path.join(__dirname, "../mood.html"));
-  });
-};
-
+app.get('/pokemon', function(req, res) {
+    res.sendFile(path.join(__dirname, '../public/html/pokemon.html'));
+});
+}

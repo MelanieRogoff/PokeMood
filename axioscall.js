@@ -1,12 +1,12 @@
 const axios = require('axios');
 
-const namer = 'pikachu'; //TESTING WITH JUST PIKACHU FOR NOW -- We will need to replace this with a this.name or something
+const namer = 'pikachu'; //TESTING  -- will need to replace this with a this.name or something
+const secondName = 'butterfree';
+const thirdName = 'snorlax';
 
-function pokeStuff() {
+//USING THREE DIFFERENT API CALLS BECAUSE WE HAVE THREE DIFFERENT POKEMON PER MOOD 
 axios.get(`https://pokeapi.co/api/v2/pokemon/${namer}`)
-  .then(response => showOutput(res)){ //call for the pokemon name and sprites
-    const upper = response.data.name.charAt(0).toUpperCase() + response.data.name.substring(1);
-    console.log(upper); //ensuring each Pokemon name is uppercase
+  .then(response => { //call for the pokemon name and sprites
     console.log(response.data.sprites.front_default)
   });
   .catch(error => {
@@ -14,10 +14,21 @@ axios.get(`https://pokeapi.co/api/v2/pokemon/${namer}`)
   });
 
   axios.get(`https://pokeapi.co/api/v2/pokemon-species/${namer}`) //Call for description
-  .then(response => showOutput(res)) {
+  .then(response => {
+    const upper = response.data.name.charAt(0).toUpperCase() + response.data.name.substring(1);
+    console.log(upper + ": " + response.data.flavor_text_entries[54].flavor_text);
+    console.log("    ")
 
-    console.log(response.data.flavor_text_entries[54].flavor_text);
+  })
+  .catch(error => {
+    console.log(error);
   });
+
+  //SECOND CALL -- THIS ONE IS FOR THE SECOND POKEMON TO BE DISPLAYED
+  axios.get(`https://pokeapi.co/api/v2/pokemon/${secondName}`)
+  .then(response => { //call for the pokemon name and sprites
+    console.log(response.data.sprites.front_default)
+  })
   .catch(error => {
     console.log(error);
   });
@@ -38,4 +49,32 @@ function showOutput(res) {
 // Event listener
 document.getElementById('get').addEventListener('click', pokeStuff);
 
-  
+  axios.get(`https://pokeapi.co/api/v2/pokemon-species/${secondName}`) //Call for description
+  .then(response => {
+    const upper = response.data.name.charAt(0).toUpperCase() + response.data.name.substring(1);
+    console.log(upper + ": " + response.data.flavor_text_entries[54].flavor_text);
+    console.log("    ")
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+  //THIRD CALL -- THIS ONE IS FOR THE SECOND POKEMON TO BE DISPLAYED
+
+  axios.get(`https://pokeapi.co/api/v2/pokemon/${thirdName}`)
+  .then(response => { //call for the pokemon name and sprites
+    console.log(response.data.sprites.front_default)
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+  axios.get(`https://pokeapi.co/api/v2/pokemon-species/${thirdName}`) //Call for description
+  .then(response => {
+    const upper = response.data.name.charAt(0).toUpperCase() + response.data.name.substring(1);
+    console.log(upper + ": " + response.data.flavor_text_entries[54].flavor_text);
+    console.log("    ")
+  })
+  .catch(error => {
+    console.log(error);
+  });

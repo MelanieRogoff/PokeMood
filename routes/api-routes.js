@@ -10,7 +10,7 @@ module.exports = function(app) {
     });
   });
 
-  // POST route for saving a new todo
+  // POST route for saving a new mood
   app.post("/api/moods", function(req, res) {
 
     db.User.create({
