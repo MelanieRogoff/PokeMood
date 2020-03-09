@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs"); //this is an npm for PW hashing
 
-//Create the User model
+//Create User model
 module.exports = function(sequelize, DataTypes) {
     const User = sequelize.define("User", {
       id: {
@@ -30,9 +30,8 @@ module.exports = function(sequelize, DataTypes) {
  User.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
   };
-  // Before User is created, automatically hash their PW
-  User.addHook("beforeCreate", function(user) {
-    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+  User.addHook("beforeCreate", function(user) { //before User is created
+    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null); //automatically hash their PW
   });
   return User;
 };
