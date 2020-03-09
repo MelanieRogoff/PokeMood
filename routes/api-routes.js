@@ -14,8 +14,9 @@ module.exports = function(app) {
   app.post("/api/moods", function(req, res) {
 
     db.User.create({
-      text: req.body.text,
-      complete: req.body.complete
+      user_name: req.body.user_name,
+      password: req.body.password,
+      mood: req.body.mood
     }).then(function(dbUser) {
       res.json(dbUser);
     })
