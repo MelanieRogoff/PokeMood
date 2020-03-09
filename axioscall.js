@@ -8,7 +8,7 @@ axios.get(`https://pokeapi.co/api/v2/pokemon/${namer}`)
     const upper = response.data.name.charAt(0).toUpperCase() + response.data.name.substring(1);
     console.log(upper); //ensuring each Pokemon name is uppercase
     console.log(response.data.sprites.front_default)
-  })
+  });
   .catch(error => {
     console.log(error);
   });
@@ -17,7 +17,7 @@ axios.get(`https://pokeapi.co/api/v2/pokemon/${namer}`)
   .then(response => showOutput(res)) {
 
     console.log(response.data.flavor_text_entries[54].flavor_text);
-  })
+  });
   .catch(error => {
     console.log(error);
   });
