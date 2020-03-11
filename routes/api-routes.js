@@ -35,44 +35,28 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/api/moods/:moods", function(req, res) {
+  app.get("/api/moods/:moods", function(req, res) { //finding all the pokemon with the corresponding mood
     db.Pokemon.findAll({
         where: {
             mood: req.params.moods
         }
     }).then(function(dbUser) {
         const multiplePokemon = [];
-        dbUser.map(function(pokename) {
-            multiplePokemon.push(apiCall(pokename.name)); //pushes the pokemon from corresponding api call 
+        dbUser.map(async function(pokename) {
+            const value = apiCall(pokename.dataValues.name);
+            console.log(value, 'api-route line 47')
+            multiplePokemon.push(value); //pushes the pokemon from corresponding api call 
         })
+
         res.json(multiplePokemon);
     });
   });
 
-//   // POST route for saving a new mood
-//   app.post("/api/moods", function(req, res) {
-
-//     db.User.create({
-//       user_name: req.body.user_name,
-//       password: req.body.password,
-//       mood: req.body.mood
-//     }).then(function(dbUser) {
-//       res.json(dbUser);
-//     })
-//       .catch(function(err) {
-//         res.json(err);
-//       });
-//   });
-
-// }
-
-
-function apiCall(pokename) {
+function apiCall(pokename) { //function for finding the pokemon
     const pokeArray = [];
     axios.get(`https://pokeapi.co/api/v2/pokemon/${pokename.toLowerCase()}`)
     .then(response => { //call for the pokemon sprites
-      pokeArray.push(
-        {
+      pokeArray.push({
             sprite: response.data.sprites.front_default
         })
     })
@@ -90,6 +74,7 @@ function apiCall(pokename) {
       console.log(error);
     });
     return pokeArray;
+
 }
 }
 
