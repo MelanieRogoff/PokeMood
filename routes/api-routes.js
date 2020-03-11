@@ -1,6 +1,8 @@
 // Requiring our models and passport 
 const db = require("../models");
 const passport = require("../config/passport");
+const axios = require('axios');
+
 
 module.exports = function(app) {
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
@@ -32,27 +34,48 @@ module.exports = function(app) {
       });
     }
   });
-};
 
-//   app.get("/api/moods", function(req, res) {
-//     db.User.findAll({}).then(function(dbUser) {
-//       res.json(dbUser);
-//     });
-//   });
+  app.get("/api/moods/:moods", function(req, res) { //finding all the pokemon with the corresponding mood
+    db.Pokemon.findAll({
+        where: {
+            mood: req.params.moods
+        }
+    }).then(function(dbUser) {
+        const multiplePokemon = [];
+        dbUser.map(async function(pokename) {
+            const value = pokename.dataValues.name; //this now works!
+            multiplePokemon.push(value); //pushes the pokemon from corresponding api call 
+        })
+        for (let i = 0; i < multiplePokemon.length; i++) {
+            console.log(apiCall(multiplePokemon)); //returns 3 empty arrays
+        }
+        // console.log(multiplePokemon) returns ["Pikachu, Clefairy, Eevee"]
+        //console.log(multiplePokemon[0].toLowerCase()) returns pikachu
+        res.json(multiplePokemon);
+    });
+  });
 
-//   // POST route for saving a new mood
-//   app.post("/api/moods", function(req, res) {
 
-//     db.User.create({
-//       user_name: req.body.user_name,
-//       password: req.body.password,
-//       mood: req.body.mood
-//     }).then(function(dbUser) {
-//       res.json(dbUser);
-//     })
-//       .catch(function(err) {
-//         res.json(err);
-//       });
-//   });
+  
+function apiCall(multiplePokemon) { //function for finding the pokemon
+    const pokeArray = [];
+    axios.get(`https://pokeapi.co/api/v2/pokemon/${multiplePokemon.toString().toLowerCase()}`)
+    .then(response => { //call for the pokemon sprites
+      pokeArray.push({
+            sprite: response.data.sprites.front_default
+        })
+    }).catch(error => {
+      console.log(error);
+    });
+    axios.get(`https://pokeapi.co/api/v2/pokemon-species/${multiplePokemon.toString().toLowerCase()}`) //Call for description
+    .then(response => {
+      pokeArray.push( {
+          description: response.data.flavor_text_entries[54].flavor_text      
+        })
+    }).catch(error => {
+      console.log(error);
+    });
+    return pokeArray;
+}
+}
 
-// }
