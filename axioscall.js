@@ -18,7 +18,6 @@ axios.get(`https://pokeapi.co/api/v2/pokemon/${namer}`)
     const upper = response.data.name.charAt(0).toUpperCase() + response.data.name.substring(1);
     console.log(upper + ": " + response.data.flavor_text_entries[54].flavor_text);
     console.log("    ")
-
   })
   .catch(error => {
     console.log(error);
@@ -31,23 +30,7 @@ axios.get(`https://pokeapi.co/api/v2/pokemon/${namer}`)
   })
   .catch(error => {
     console.log(error);
-  });
-
-
-  // Show output in browser
-function showOutput(res) {
-  document.getElementById('res').innerHTML = `
-  <div class="card card-body mb-4">
-    <h5>Status: ${res.data.sprites.front_default}</h5>
-  </div>
-  <div class="card card-body mb-4">
-    <h5>Status: ${res.data.flavor_text_entries[54].flavor_text}</h5>
-  </div>
-`;
-}
-
-// Event listener
-document.getElementById('get').addEventListener('click', pokeStuff);
+  })
 
   axios.get(`https://pokeapi.co/api/v2/pokemon-species/${secondName}`) //Call for description
   .then(response => {
