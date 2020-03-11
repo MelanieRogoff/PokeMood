@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mood Selection</title>
+    <title>Login</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -17,40 +17,45 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="/../../axioscall.js"></script>
     <script defer src="/node_modules/swup/dist/swup.min.js"></script>
-    <script defer src="/../js/script.js"></script>
-    <link rel="stylesheet" href="/../css/main.css">
+    <script defer src="/public/js/script.js"></script>
+    <link rel="stylesheet" href="/public/css/main.css">
 </head>
 
 
 <body>
 
-    <body>
+    <main id="swup" class="transition-fade">
 
-        <main id="swup" class="transition-fade">
-            <div class="text-center">
-                <a href="/" class="btn btn-warning" role="button">Home</a>
+        <div class="text-center">
+            <a href="/" class="btn btn-warning" role="button">PokeMood Home</a>
+            <a href="/mood" class="btn btn-warning" role="button">Just a Simple Button to get to the
+                moods</a>
+        </div>
+
+        <div class="jumbotron jumbron-fluid">
+            <div class="container">
+                <h1>User Profile Page</h1>
+
+                <hr class="my-4">
+
+                <h3>Your Mood Saves</h3>
+              
+                <hr class="my-4">
+                
+                <a href="/" class="btn btn-warning" role="button">Logout</a>
+
             </div>
-            <div class="card">
-                <h1 class="card-header">Choose a Mood!</h1>
-                <div class="card-body">
-                    <div class="text-center">
-                        <a href="/pokemon" class="btn btn-success" id="get" role="button">Happy</a>
-                        <a href="/pokemon" class="btn btn-danger" role="button">Angry</a>
-                        <a href="/pokemon" class="btn btn-warning" role="button">Tired</a>
-                        <a href="/pokemon" class="btn btn-primary" role="button">Confused</a>
-                        <a href="/pokemon" class="btn btn-dark" role="button">Sad</a>
-                        <a href="/pokemon" class="btn btn-info" role="button">Hungry</a>
-                    </div>
+
+        </div>
 
 
 
-        </main>
+    </main>
 
 
+    <div class="transition-wipe overlay"></div>
 
-    </body>
 
 </body>
 

@@ -28,17 +28,37 @@
     <main id="swup" class="transition-fade">
 
         <div class="text-center">
-            <a href="/" class="btn btn-warning" role="button">PokeMood Home</a>
-            <a href="/mood" class="btn btn-warning" role="button">Just a Simple Button to get to the moods</a>
+            <a href="/" class="btn btn-warning" role="button">Home</a>
+            <!-- <a href="/mood" class="btn btn-warning" role="button">Just a Simple Button to get to the moods</a> -->
         </div>
 
         <div class="jumbotron jumbron-fluid">
             <div class="container">
                 <p class="lead">Login and save your Moods!</p>
+                
+
+                <div class="login-form">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Email</label>
+                                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Password</label>
+                                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                            </div>
+                    </form>
+                </div>
+
+                <a href="/mood" class="btn btn-warning" id="login-button" role="button">Login</a>
 
                 <hr class="my-4">
 
-                <a href="#" class="btn btn-warning" id="login-button" role="button">Login</a>
+                <p class="lead">Create a New Profile</p>
+
+
+                <a href="/signup" class="btn btn-warning" id="signup-button" role="button">Sign Up</a>
 
 
             </div>
