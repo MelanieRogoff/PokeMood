@@ -3,6 +3,13 @@ body {
   background-size: 400% 400%;
 }
 
+.container {
+  display: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .card-header {
   text-align: center;
   background: red;
