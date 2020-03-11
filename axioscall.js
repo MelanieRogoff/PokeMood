@@ -8,7 +8,7 @@ const thirdName = 'snorlax';
 axios.get(`https://pokeapi.co/api/v2/pokemon/${namer}`)
   .then(response => { //call for the pokemon name and sprites
     console.log(response.data.sprites.front_default)
-  });
+  })
   .catch(error => {
     console.log(error);
   });
@@ -32,7 +32,7 @@ axios.get(`https://pokeapi.co/api/v2/pokemon/${namer}`)
   .catch(error => {
     console.log(error);
   });
-}
+
 
   // Show output in browser
 function showOutput(res) {
