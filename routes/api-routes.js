@@ -1,6 +1,8 @@
 // Requiring our models and passport 
 const db = require("../models");
 const passport = require("../config/passport");
+const axios = require('axios');
+
 
 module.exports = function(app) {
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
@@ -32,13 +34,20 @@ module.exports = function(app) {
       });
     }
   });
-};
 
-//   app.get("/api/moods", function(req, res) {
-//     db.User.findAll({}).then(function(dbUser) {
-//       res.json(dbUser);
-//     });
-//   });
+  app.get("/api/moods/:moods", function(req, res) {
+    db.Pokemon.findAll({
+        where: {
+            mood: req.params.moods
+        }
+    }).then(function(dbUser) {
+        const multiplePokemon = [];
+        dbUser.map(function(pokename) {
+            multiplePokemon.push(apiCall(pokename.name)); //pushes the pokemon from corresponding api call 
+        })
+        res.json(multiplePokemon);
+    });
+  });
 
 //   // POST route for saving a new mood
 //   app.post("/api/moods", function(req, res) {
@@ -56,3 +65,31 @@ module.exports = function(app) {
 //   });
 
 // }
+
+
+function apiCall(pokename) {
+    const pokeArray = [];
+    axios.get(`https://pokeapi.co/api/v2/pokemon/${pokename.toLowerCase()}`)
+    .then(response => { //call for the pokemon sprites
+      pokeArray.push(
+        {
+            sprite: response.data.sprites.front_default
+        })
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
+    axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokename.toLowerCase()}`) //Call for description
+    .then(response => {
+      pokeArray.push( {
+          description: response.data.flavor_text_entries[54].flavor_text      
+        })
+    })
+    .catch(error => {
+      console.log(error);
+    });
+    return pokeArray;
+}
+}
+
