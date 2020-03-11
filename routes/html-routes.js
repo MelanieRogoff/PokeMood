@@ -9,22 +9,20 @@ module.exports = function(app) {
     });
 
     app.get("/login", function(req, res) {
-      // If user has an account send them to the mood page
-      if (req.user) {
-        return res.redirect("/mood");
-      }
-      res.sendFile(path.join(__dirname, "../public/html/login.html"));
+      if (req.user) { //if user has an account
+        return res.redirect("/mood"); //send them to the mood page
+      } //else
+      res.sendFile(path.join(__dirname, "../public/html/login.html")); //send login file to user
     });
   
-    app.get("/mood", function(req, res) {
-      // If the user already has a mood send them to Pokemon page
-      if (req.mood) {
-        res.redirect("/pokemon");
+    app.get("/mood", isAuthenticated, function(req, res) {
+      if (req.mood) { //if user has a mood picked out
+        res.redirect("/pokemon"); //send them to Pokemon page
       }
       res.sendFile(path.join(__dirname, "../public/html/pokemon.html"));
     });
 
-    app.get("/pokemon", function(req, res) {
+    app.get("/pokemon", isAuthenticated, function(req, res) {
         if (req.pokemon) {
           res.redirect("/");
         }
@@ -36,9 +34,6 @@ module.exports = function(app) {
     });
 
     app.get("/signup", function(req, res) {
-        if (!req.user) {
-            res.redirect("/signup");
-        }
         res.sendFile(path.join(__dirname, "../public/html/signup.html"));
       });
   };
