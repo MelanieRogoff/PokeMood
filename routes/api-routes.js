@@ -3,19 +3,17 @@ const db = require("../models");
 const passport = require("../config/passport");
 const axios = require('axios');
 
-
 module.exports = function(app) {
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.json(req.user); //If user has valid login, send them to login page, otherwise throw error. 
+    res.json(req.user); //authenticate the login
   });
 
   // Route for signing up a user 
   app.post("/api/signup", function(req, res) {
-    db.User.create({ //if user is created successfully
+    db.User.create({ 
       email: req.body.email,
       password: req.body.password
-    })
-      .then(function() { 
+    }).then(function() { 
         res.redirect(307, "/api/login"); //take them to login page
       })
       .catch(function(err) { //otherwise throw an error
@@ -23,59 +21,43 @@ module.exports = function(app) {
       });
   });
 
-  // Route for getting data about our user to be used client side
+  // Route for getting data about user to be used on the client-side
   app.get("/api/user_data", function(req, res) {
     if (!req.user) { //if user isn't logged in
       res.json({}); //send back empty object
     } else {
-      res.json({ //send back user's email + PW
+      res.json({ //otherwise, send back user's email + PW
         email: req.user.email,
         id: req.user.id
       });
     }
   });
-
-  app.get("/api/moods/:moods", function(req, res) { //finding all the pokemon with the corresponding mood
-    db.Pokemon.findAll({
+//Route for finding all the pokemon with the corresponding mood
+  app.get("/api/moods/:moods", async function(req, res) { //makes the whole function asynchronous
+   let findPokemon = db.Pokemon.findAll({
         where: {
             mood: req.params.moods
         }
-    }).then(function(dbUser) {
+    })
         const multiplePokemon = [];
-        dbUser.map(async function(pokename) {
-            const value = pokename.dataValues.name; //this now works!
-            multiplePokemon.push(value); //pushes the pokemon from corresponding api call 
+        await findPokemon.map(async function(pokename) { //the map ensures that one pokemon name is searched for at a time
+            const value = pokename.dataValues.name; 
+            multiplePokemon.push(await apiCall(value)); //pushes the pokemon from corresponding api call 
         })
-        for (let i = 0; i < multiplePokemon.length; i++) {
-            console.log(apiCall(multiplePokemon)); //returns 3 empty arrays
-        }
-        // console.log(multiplePokemon) returns ["Pikachu, Clefairy, Eevee"]
-        //console.log(multiplePokemon[0].toLowerCase()) returns pikachu
-        res.json(multiplePokemon);
+        return res.json(multiplePokemon);
     });
-  });
 
-
-  
-function apiCall(multiplePokemon) { //function for finding the pokemon
-    const pokeArray = [];
-    axios.get(`https://pokeapi.co/api/v2/pokemon/${multiplePokemon.toString().toLowerCase()}`)
-    .then(response => { //call for the pokemon sprites
-      pokeArray.push({
-            sprite: response.data.sprites.front_default
-        })
-    }).catch(error => {
-      console.log(error);
-    });
-    axios.get(`https://pokeapi.co/api/v2/pokemon-species/${multiplePokemon.toString().toLowerCase()}`) //Call for description
-    .then(response => {
-      pokeArray.push( {
-          description: response.data.flavor_text_entries[54].flavor_text      
-        })
-    }).catch(error => {
-      console.log(error);
-    });
-    return pokeArray;
+//Function for finding Pokemon sprites, names + descriptions
+async function apiCall(multiplePokemon) { 
+    const pokeArray = {[multiplePokemon]: {}}; //Making an object with the key of the name, and the value is an empty object to be filled with sprite and description
+    //Pokemon Sprites Call
+    let sprite = await axios.get(`https://pokeapi.co/api/v2/pokemon/${multiplePokemon.toLowerCase()}`)
+      pokeArray[multiplePokemon].sprite = await sprite.data.sprites.front_default //this assigns the corresponding sprite to the specific pokemon name 
+    
+    //Pokemon Description Call
+    let description = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${multiplePokemon.toLowerCase()}`) 
+    pokeArray[multiplePokemon].description = await description.data.flavor_text_entries[54].flavor_text  //this assigns the corresponding description to the specific pokemon name 
+    return await pokeArray;
 }
 }
 
