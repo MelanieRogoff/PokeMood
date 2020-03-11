@@ -34,8 +34,8 @@ body {
 
 .transition-fade {
   opacity: 1;
-  -webkit-transition: 500ms;
-  transition: 500ms;
+  -webkit-transition: 900ms;
+  transition: 900ms;
   -webkit-transform: translateX(0);
           transform: translateX(0);
   -webkit-transform-origin: left;
