@@ -43,38 +43,39 @@ module.exports = function(app) {
     }).then(function(dbUser) {
         const multiplePokemon = [];
         dbUser.map(async function(pokename) {
-            const value = apiCall(pokename.dataValues.name);
-            console.log(value, 'api-route line 47')
+            const value = pokename.dataValues.name; //this now works!
             multiplePokemon.push(value); //pushes the pokemon from corresponding api call 
         })
-
+        for (let i = 0; i < multiplePokemon.length; i++) {
+            console.log(apiCall(multiplePokemon)); //returns 3 empty arrays
+        }
+        // console.log(multiplePokemon) returns ["Pikachu, Clefairy, Eevee"]
+        //console.log(multiplePokemon[0].toLowerCase()) returns pikachu
         res.json(multiplePokemon);
     });
   });
 
-function apiCall(pokename) { //function for finding the pokemon
+
+  
+function apiCall(multiplePokemon) { //function for finding the pokemon
     const pokeArray = [];
-    axios.get(`https://pokeapi.co/api/v2/pokemon/${pokename.toLowerCase()}`)
+    axios.get(`https://pokeapi.co/api/v2/pokemon/${multiplePokemon.toString().toLowerCase()}`)
     .then(response => { //call for the pokemon sprites
       pokeArray.push({
             sprite: response.data.sprites.front_default
         })
-    })
-    .catch(error => {
+    }).catch(error => {
       console.log(error);
     });
-
-    axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokename.toLowerCase()}`) //Call for description
+    axios.get(`https://pokeapi.co/api/v2/pokemon-species/${multiplePokemon.toString().toLowerCase()}`) //Call for description
     .then(response => {
       pokeArray.push( {
           description: response.data.flavor_text_entries[54].flavor_text      
         })
-    })
-    .catch(error => {
+    }).catch(error => {
       console.log(error);
     });
     return pokeArray;
-
 }
 }
 
