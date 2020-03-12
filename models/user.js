@@ -14,10 +14,15 @@ module.exports = function(sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    token: {
+        type: DataTypes.STRING,
+        allowNull: true
     }
   });
   // Checks if an unhashed PW entered by user can be compared to the stored, hashed PW 
   User.prototype.validPassword = function(password) {
+      console.log(password, "PW"); //nonhashed
     return bcrypt.compareSync(password, this.password);
   };
   
