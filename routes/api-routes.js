@@ -1,11 +1,15 @@
-// Requiring our models and passport 
+const bcrypt = require("bcryptjs"); //npm for PW hashing
 const db = require("../models");
-const passport = require("../config/passport");
 const axios = require('axios');
 
 module.exports = function(app) {
-  app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.json(req.user); //authenticate the login
+  app.post("/api/login", function(req, res) {
+      const hash = bcrypt.hashSync(req.body.userData.password, 10); //how many rounds the db is doing
+      bcrypt.compare(req.body.userData.password, hash, function(err, checker) {
+        if (true) {
+            res.send(true);
+        }
+    });
   });
 
   // Route for signing up a user 
