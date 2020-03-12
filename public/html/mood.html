@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mood Selection</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
@@ -18,9 +17,8 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="/../../axioscall.js"></script>
-    <script defer src="/node_modules/swup/dist/swup.min.js"></script>
-    <script defer src="/../js/script.js"></script>
-    <link rel="stylesheet" href="/../css/main.css">
+    <script defer src="/public/js/script.js"></script>
+    <link rel="stylesheet" href="/public/css/main.css">
 </head>
 
 
@@ -36,20 +34,25 @@
                 <h1 class="card-header">Choose a Mood!</h1>
                 <div class="card-body">
                     <div class="text-center">
-                        <a href="/pokemon" class="btn btn-success" id="get" role="button">Happy</a>
-                        <a href="/pokemon" class="btn btn-danger" role="button">Angry</a>
-                        <a href="/pokemon" class="btn btn-warning" role="button">Tired</a>
-                        <a href="/pokemon" class="btn btn-primary" role="button">Confused</a>
-                        <a href="/pokemon" class="btn btn-dark" role="button">Sad</a>
-                        <a href="/pokemon" class="btn btn-info" role="button">Hungry</a>
+                        <a href="/pokemon" class="btn btn-success mood-selector" id="happy-btn" role="button">Happy</a>
+
+                        <a class="btn btn-success mood-selector" id="angry-btn" role="button">Angry</a>
+
+                        <a class="btn btn-success mood-selector" id="tired-btn" role="button">Tired</a>
+
+                        <a class="btn btn-success mood-selector" id="confused-btn" role="button">Confused</a>
+
+                        <a class="btn btn-success mood-selector" id="hungry-btn" role="button">Hungry</a>
                     </div>
 
+                    <div id="addelement"></div>
 
+
+                    <script type="text/javascript" src="../../js/pokemon.js"></script>
 
         </main>
 
-
-
+        
     </body>
 
 </body>

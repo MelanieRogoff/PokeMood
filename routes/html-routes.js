@@ -1,9 +1,7 @@
 const path = require('path');
-
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
-
     app.get("/", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/html/index.html"));
     });
@@ -15,14 +13,11 @@ module.exports = function(app) {
       res.sendFile(path.join(__dirname, "../public/html/login.html")); //send login file to user
     });
   
-    app.get("/mood", isAuthenticated, function(req, res) {
-      if (req.mood) { //if user has a mood picked out
-        res.redirect("/pokemon"); //send them to Pokemon page
-      }
-      res.sendFile(path.join(__dirname, "../public/html/pokemon.html"));
+    app.get("/mood", function(req, res) {
+       res.sendFile(path.join(__dirname, "../public/html/mood.html"));
     });
 
-    app.get("/pokemon", isAuthenticated, function(req, res) {
+    app.get("/pokemon", function(req, res) {
         if (req.pokemon) {
           res.redirect("/");
         }
