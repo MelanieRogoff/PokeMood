@@ -16,13 +16,12 @@ module.exports = function(app) {
       if (req.user) { //if user has an account
         return res.redirect("/mood"); //send them to the mood page
       } //else
-      res.sendFile(path.join(__dirname, "../public/html/login.html")); //send login file to user
+      else{
+        res.sendFile(path.join(__dirname, "../public/html/login.html")); //send login file to user
+      }
     });
   
     app.get("/mood", isAuthenticated, function(req, res) {
-      if (req.mood) { //if user has a mood picked out
-        res.redirect("/pokemon"); //send them to Pokemon page
-      }
       res.sendFile(path.join(__dirname, "../public/html/mood.html"));
     });
   
