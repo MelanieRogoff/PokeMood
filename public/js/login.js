@@ -1,20 +1,22 @@
 // loginUser does a post to our "api/login" route and if successful, redirects us the the mood page
 function loginUser(userData) {
     $.ajax({
-      url: "/api/login",
-      method: 'POST',
-      data: {
-        userData
-      }
-  })
-    .then(function(err, res) {
-        if (err) {
-            console.log(err)
-        }
-            window.location = "/mood" 
-            //probably put in the localStorage of someone is logged in here
+            url: "/api/login",
+            method: 'POST',
+            data: {
+                userData
+            }
         })
-  }
+        .then(function (res) {
+            localStorage.setItem("userData", res.token) //send token to front end
+             window.location = "/mood" 
+        })
+        .catch(function (err) {
+            if (err) {
+                console.log(err);
+            }
+        })
+}
   
   $(document).ready(function() {
       // Getting references to our form and inputs

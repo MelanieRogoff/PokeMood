@@ -1,24 +1,37 @@
 const bcrypt = require("bcryptjs"); //npm for PW hashing
 const db = require("../models");
 const axios = require('axios');
+const uid = require('uid-safe')
+const string = uid.sync(18)
 
 module.exports = function(app) {
   app.post("/api/login", function(req, res) {
-      const hash = bcrypt.hashSync(req.body.userData.password, 10); //how many rounds the db is doing
-      bcrypt.compare(req.body.userData.password, hash, function(err, checker) {
-        if (true) {
-            res.send(true);
+      db.User.findOne({ //find where password=hashed one -- this returns data
+        where: {
+              email: req.body.userData.email,
         }
+        }).then(function(User) {
+            if (User.validPassword(req.body.userData.password)) {
+                db.User.update({ token: string }, { //update user's token - updates usually return true or false
+                    where: {
+                        id: User.id //do User.id because we're in the db
+                    }
+                }).then(function() { //don't put User here because of scoping -- can't have the same parameter. By making this param empty, it grabs User, which is what we want
+                    return res.json(User) //send user info back to frontend
+                });
+                }
+        });
     });
-  });
 
   // Route for signing up a user 
   app.post("/api/signup", function(req, res) {
+    const hash = bcrypt.hashSync(req.body.userData.password, 10); //how many rounds the db is doing
     db.User.create({ 
       email: req.body.email,
-      password: req.body.password
+      password: hash,
+      token: string
     }).then(function() { 
-        res.redirect(307, "/api/login"); //take them to login page
+        res.redirect("/login"); //take them to login page
       })
       .catch(function(err) { //otherwise throw an error
         res.status(401).json(err);
