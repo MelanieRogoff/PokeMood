@@ -1,4 +1,84 @@
-$colors: (
+/* Pokeball */
+
+.ball {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 30px auto;
+    border-radius: 50%;
+    background-image: -webkit-radial-gradient(60% 50%, circle, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 1) 100%), -webkit-linear-gradient(-90deg, #D00 45%, #333 45%, #3f3f3f 50%, #333 55%, #FFF 55%);
+    background-image: -moz-radial-gradient(60% 50%, circle, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 1) 100%), -moz-linear-gradient(-90deg, #D00 45%, #333 45%, #3f3f3f 50%, #333 55%, #FFF 55%);
+    -o-radial-gradient(60% 50%, circle, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 1) 100%),
+    background-image: -o-linear-gradient(-90deg, #D00 45%, #333 45%, #3f3f3f 50%, #333 55%, #FFF 55%);
+    background-image: radial-gradient:(60% 50%, circle, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 1) 100%), linear-gradient(-90deg, #D00 45%, #333 45%, #3f3f3f 50%, #333 55%, #FFF 55%);
+  }
+  
+  .pokebutton {
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    background-color: #FFF;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px #666, 0 0 0 10px #fff, 0 0 0 16px #3f3f3f;
+    margin: 40%;
+  }
+  
+  .ball:hover {
+    cursor: pointer;
+    -webkit-animation: shake .1s;
+    animation-iteration-count: 2;
+    cursor: pointer;
+    -moz-animation: shake .1s;
+    animation-iteration-count: 2;
+    cursor: pointer;
+    -o-animation: shake .1s;
+    animation-iteration-count: 2;
+    cursor: pointer;
+    animation: shake .1s;
+    animation-iteration-count: 2;
+  }
+  
+  @-webkit-keyframes shake {
+    0%,
+    100% {
+      -webkit-transform: rotate(-5deg);
+    }
+    50% {
+      -webkit-transform: rotate(5deg);
+    }
+  }
+  
+  @-moz-keyframes shake {
+    0%,
+    100% {
+      -moz-transform: rotate(-5deg);
+    }
+    50% {
+      -moz-transform: rotate(5deg);
+    }
+  }
+  
+  @-o-keyframes shake {
+    0%,
+    100% {
+      -o-transform: rotate(-5deg);
+    }
+    50% {
+      -o-transform: rotate(5deg);
+    }
+  }
+  
+  @keyframes shake {
+    0%,
+    100% {
+      transform: rotate(-5deg);
+    }
+    50% {
+      transform: rotate(5deg);
+    }
+  }
+
+  $colors: (
     primary: red,
     secondary: orange,
     accent: yellow,
