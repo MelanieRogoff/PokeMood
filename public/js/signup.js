@@ -23,20 +23,19 @@ function loginUser(email, password) {
     
       // When the form is submitted, we validate there's an email and password entered
       loginForm.on("click", function(event) {
-          console.log("Is the button working")
         event.preventDefault();
         const userData = {
           email: emailInput.val().trim(),
           password: passwordInput.val().trim()
         };
-        console.log(userData, "userData in Line 32")
         if (!userData.email || !userData.password) {
           return;
         }
     
         // If we have an email and password we run the loginUser function and clear the form
         loginUser(userData.email, userData.password);
-        console.log("Functioning", loginUser(userData.email, userData.password))
+        console.log(loginUser, loginUser(), "HI")
+        console.log("Functioning", loginUser(userData.email, userData.password)) //THIS IS UNDEFINED
         emailInput.val("");
         passwordInput.val("");
       });
