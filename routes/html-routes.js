@@ -17,13 +17,6 @@ module.exports = function(app) {
        res.sendFile(path.join(__dirname, "../public/html/mood.html"));
     });
 
-    app.get("/pokemon", function(req, res) {
-        if (req.pokemon) {
-          res.redirect("/");
-        }
-        res.sendFile(path.join(__dirname, "../public/html/pokemon.html"));
-      });
-
     app.get("/signup", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/html/signup.html"));
       });
