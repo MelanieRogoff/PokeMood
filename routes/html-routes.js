@@ -3,7 +3,7 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
     app.get("/", function(req, res) {
-        res.json("testing");
+        res.send("testing");
       //  res.sendFile(path.join(__dirname, "../public/html/index.html"));
     });
 
