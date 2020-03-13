@@ -1,5 +1,5 @@
 // loginUser does a post to our "api/login" route and if successful, redirects us the the mood page
-
+console.log("test123")
 function loginUser(email, password) {
     console.log(email, password);
     $.ajax({
@@ -18,7 +18,6 @@ function loginUser(email, password) {
       console.log(err);
     });
   }
-  
   
   $(document).ready(function() {
       // Getting references to our form and inputs
@@ -45,6 +44,4 @@ function loginUser(email, password) {
         console.log(userData.email, userData.password);
       });
     
-      
-      
     });

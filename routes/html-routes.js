@@ -1,13 +1,7 @@
 const path = require('path');
-const express = require("express");
-
-
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
-
-    app.use('/public', express.static('public'));
-
     app.get("/", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/html/index.html"));
     });
@@ -21,9 +15,16 @@ module.exports = function(app) {
       }
     });
   
-    app.get("/mood", isAuthenticated, function(req, res) {
-      res.sendFile(path.join(__dirname, "../public/html/mood.html"));
+    app.get("/mood", function(req, res) {
+       res.sendFile(path.join(__dirname, "../public/html/mood.html"));
     });
+
+    app.get("/pokemon", function(req, res) {
+        if (req.pokemon) {
+          res.redirect("/");
+        }
+        res.sendFile(path.join(__dirname, "../public/html/pokemon.html"));
+      });
   
 
     app.get("/signup", function(req, res) {
