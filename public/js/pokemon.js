@@ -1,13 +1,15 @@
 $(".mood-selector").on("click", function(evt) {
     var mood = evt.target.text;
- 
+    console.log("Line 3, pokemon.js")
+
      mood = mood.trim().toLowerCase();
  
      $.ajax({
          url: "/api/moods/" + mood,
          method: 'GET',
      }).then(function(data) {
- 
+        console.log("Line 11, pokemon.js")
+
          $('#addelement').empty();
          for (let i = 0; i < data.length; i++) {
              const pokemon = data[i];
@@ -24,7 +26,8 @@ $(".mood-selector").on("click", function(evt) {
                  pokeDisplay += '</div>';
  
                  $("#addelement").append(pokeDisplay);
- 
+                 console.log(pokeDisplay, "Line 29, pokemon.js")
+
          }
      })
  
