@@ -9,7 +9,7 @@ function loginUser(email, password) {
       }
   })
     .then(function() {
-      window.location.replace("/../html/mood.html");
+      window.location.replace("/mood");
     })
     .catch(function(err) {
       console.log(err);

@@ -25,6 +25,7 @@ module.exports = function(app) {
 
   // Route for signing up a user 
   app.post("/api/signup", function(req, res) {
+      console.log("post to the route")
     const hash = bcrypt.hashSync(req.body.userData.password, 10); //how many rounds the db is doing
     db.User.create({ 
       email: req.body.email,
