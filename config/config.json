@@ -16,12 +16,7 @@
     "operatorsAliases": false
   },
   "production": {
-    "username": "root",
-    "password": "ilovemusic3",
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases": false,
-    "use_env_variable":"JAWSB_URL"
+    "use_env_variable":"JAWSB_URL",
+    "dialect": "mysql"
   }
 }
