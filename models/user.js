@@ -1,37 +1,33 @@
-const bcrypt = require("bcryptjs"); //this is an npm for PW hashing
-
-//Create User model
+const bcrypt = require("bcryptjs"); //npm for PW hashing
+// Creating the User model
 module.exports = function(sequelize, DataTypes) {
-    const User = sequelize.define("User", {
-      id: {
-          type: DataTypes.INTEGER,
-          autoIncrement: true,
-          allowNull: false,
-          primaryKey: true
-      }, 
-      user_name: {
-          type: DataTypes.STRING,
-          allowNull: false,
-          unique: true,
-          validate: {
-              isUserName: true
-          }
-      },
-      password: {
-          type: DataTypes.STRING,
-          allowNull: false
-      },
-      mood: {
-          type: DataTypes.STRING,
-          allowNull: false
+  const User = sequelize.define("User", {
+    // The email cannot be null, and must be a proper email before creation
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true
       }
-    });
- // This checks if an unhashed PW from user can be compared to hashed PW we stored 
- User.prototype.validPassword = function(password) {
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    token: {
+        type: DataTypes.STRING,
+        allowNull: true
+    }
+  });
+  // Checks if an unhashed PW entered by user can be compared to the stored, hashed PW 
+  User.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
   };
-  User.addHook("beforeCreate", function(user) { //before User is created
-    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null); //automatically hash their PW
+  
+  // Before a User is created, automatically hash their PW
+  User.addHook("beforeCreate", function(user) {
+    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
   });
   return User;
 };
