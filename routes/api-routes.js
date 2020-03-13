@@ -6,17 +6,17 @@ const string = uid.sync(18)
 
 module.exports = function(app) {
   app.post("/api/login", function(req, res) {
-      db.User.findOne({ //find where password=hashed one
+      db.User.findOne({ //find where password=hashed one -- this returns data
         where: {
               email: req.body.userData.email,
         }
         }).then(function(User) {
             if (User.validPassword(req.body.userData.password)) {
-                db.User.update({ token: string }, { //update user's token
+                db.User.update({ token: string }, { //update user's token - updates usually return true or false
                     where: {
                         id: User.id //do User.id because we're in the db
                     }
-                }).then(function(User) {
+                }).then(function() { //don't put User here because of scoping -- can't have the same parameter. By making this param empty, it grabs User, which is what we want
                     return res.json(User) //send user info back to frontend
                 });
                 }

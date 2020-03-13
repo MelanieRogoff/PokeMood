@@ -22,7 +22,6 @@ module.exports = function(sequelize, DataTypes) {
   });
   // Checks if an unhashed PW entered by user can be compared to the stored, hashed PW 
   User.prototype.validPassword = function(password) {
-      console.log(password, "PW"); //nonhashed
     return bcrypt.compareSync(password, this.password);
   };
   
