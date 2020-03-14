@@ -9,7 +9,7 @@ function loginUser(userData) {
         })
         .then(function (res) {
             localStorage.setItem("userData", res.token) //send token to front end
-             window.location = "/mood" 
+            window.location = "/mood" 
         })
         .catch(function (err) {
             if (err) {

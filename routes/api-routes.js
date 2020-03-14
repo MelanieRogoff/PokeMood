@@ -10,14 +10,14 @@ module.exports = function(app) {
         where: {
               email: req.body.userData.email,
         }
-        }).then(function(dbUser) {
-            console.log(res.json(dbUser), "CONSOLE LOG HERE");
+        }).then(function(dbUser) { //dbUser is a param that indicates what came from the db
+            res.json(dbUser); //res.json converts the data into the model which has the validpassword, and the conversion MUST happen before we can use the following function. By doing res.json here, we transform the data into the model so that we can utilize it
             if (dbUser.validPassword(req.body.userData.password)) {
                 db.User.update({ token: string }, { //update token 
                     where: {
                         id: dbUser.id //do User.id because we're in the db
                     }
-                }).then(function() { //don't put User here because of scoping -- can't have the same parameter. By making this param empty, it grabs User, which is what we want
+                }).then(function() { //don't put param here because of scoping -- can't have the same parameter. By making this param empty, it grabs User, which is what we want
                     return res.json(dbUser) //send user info back to frontend
                 });
                 }
