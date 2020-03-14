@@ -25,7 +25,7 @@ module.exports = function(app) {
 
   // Route for signing up a user 
   app.post("/api/signup", function(req, res) {
-    const hash = bcrypt.hashSync(req.body.userData.password, 10); //how many rounds the db is doing
+    const hash = bcrypt.hashSync(req.body.password, 10); //how many rounds the db is doing
     db.User.create({ 
       email: req.body.email,
       password: hash,
@@ -51,7 +51,7 @@ module.exports = function(app) {
   });
 //Route for finding all the pokemon with the corresponding mood
   app.get("/api/moods/:moods", async function(req, res) { //makes the whole function asynchronous
-   let findPokemon = db.Pokemon.findAll({
+    let findPokemon = db.Pokemon.findAll({
         where: {
             mood: req.params.moods
         }
@@ -70,7 +70,7 @@ async function apiCall(multiplePokemon) {
     //Pokemon Sprites Call
     let sprite = await axios.get(`https://pokeapi.co/api/v2/pokemon/${multiplePokemon.toLowerCase()}`)
       pokeArray[multiplePokemon].sprite = await sprite.data.sprites.front_default //this assigns the corresponding sprite to the specific pokemon name 
-    
+
     //Pokemon Description Call
     let description = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${multiplePokemon.toLowerCase()}`) 
     pokeArray[multiplePokemon].description = await description.data.flavor_text_entries[54].flavor_text  //this assigns the corresponding description to the specific pokemon name 

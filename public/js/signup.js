@@ -1,7 +1,5 @@
 // loginUser does a post to our "api/login" route and if successful, redirects us the the mood page
-console.log("test123")
 function loginUser(email, password) {
-    console.log(email, password);
     $.ajax({
       url: "/api/signup",
       method: 'POST',
@@ -12,7 +10,6 @@ function loginUser(email, password) {
   })
     .then(function() {
       window.location.replace("/mood");
-      // If there's an error, log the error
     })
     .catch(function(err) {
       console.log(err);
@@ -20,7 +17,6 @@ function loginUser(email, password) {
   }
   
   $(document).ready(function() {
-      // Getting references to our form and inputs
       const loginForm = $("#login-button");
       const emailInput = $("input#inputEmail4");
       const passwordInput = $("input#inputPassword4");
@@ -32,7 +28,7 @@ function loginUser(email, password) {
           email: emailInput.val().trim(),
           password: passwordInput.val().trim()
         };
-    
+
         if (!userData.email || !userData.password) {
           return;
         }
@@ -41,7 +37,6 @@ function loginUser(email, password) {
         loginUser(userData.email, userData.password);
         emailInput.val("");
         passwordInput.val("");
-        console.log(userData.email, userData.password);
       });
     
     });

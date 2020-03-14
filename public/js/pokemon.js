@@ -1,13 +1,10 @@
 $(".mood-selector").on("click", function(evt) {
     var mood = evt.target.text;
- 
      mood = mood.trim().toLowerCase();
- 
      $.ajax({
          url: "/api/moods/" + mood,
          method: 'GET',
-     }).then(function(data) {
- 
+     }).then(function(data) { 
          $('#addelement').empty();
          for (let i = 0; i < data.length; i++) {
              const pokemon = data[i];
@@ -24,7 +21,6 @@ $(".mood-selector").on("click", function(evt) {
                  pokeDisplay += '</div>';
  
                  $("#addelement").append(pokeDisplay);
- 
          }
      })
  
