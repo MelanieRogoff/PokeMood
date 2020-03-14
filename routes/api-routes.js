@@ -29,11 +29,7 @@ module.exports = function(app) {
 
   // Route for signing up a user 
   app.post("/api/signup", function(req, res) {
-    console.log("Line 32, api-routes.js") // THIS GOT HIT
-
-    const hash = bcrypt.hashSync(req.body.userData.password, 10); //how many rounds the db is doing
-    console.log(hash, "Line 35, api-routes.js") // NOT HIT
-
+    const hash = bcrypt.hashSync(req.body.password, 10); //how many rounds the db is doing
     db.User.create({ 
       email: req.body.email,
       password: hash,
