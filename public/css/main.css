@@ -3,6 +3,13 @@ body {
   background-size: 400% 400%;
 }
 
+.appendedHTML {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
 .container {
   display: center;
   -webkit-box-pack: center;
@@ -16,7 +23,7 @@ body {
 }
 
 .card-body {
-  background: red;
+  background: white;
 }
 
 .overlay {
