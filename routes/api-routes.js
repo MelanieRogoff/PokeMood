@@ -6,7 +6,7 @@ const string = uid.sync(18)
 
 module.exports = function(app) {
   app.post("/api/login", function(req, res) {
-      console.log("Line 9, api-routes.js, /api/login")
+      console.log("Line 9, api-routes.js, /api/login") //HEROKU HIT THIS
       db.User.findOne({ //find where password=hashed one -- this returns data
         where: {
               email: req.body.userData.email,
@@ -29,10 +29,10 @@ module.exports = function(app) {
 
   // Route for signing up a user 
   app.post("/api/signup", function(req, res) {
-    console.log("Line 32, api-routes.js")
+    console.log("Line 32, api-routes.js") // THIS GOT HIT
 
     const hash = bcrypt.hashSync(req.body.userData.password, 10); //how many rounds the db is doing
-    console.log(hash, "Line 35, api-routes.js")
+    console.log(hash, "Line 35, api-routes.js") // NOT HIT
 
     db.User.create({ 
       email: req.body.email,
@@ -63,28 +63,28 @@ module.exports = function(app) {
   });
 //Route for finding all the pokemon with the corresponding mood
   app.get("/api/moods/:moods", async function(req, res) { //makes the whole function asynchronous
-    console.log("Line 66, api-routes.js")
+    console.log("Line 66, api-routes.js") // THIS GOT HIT
 
     let findPokemon = db.Pokemon.findAll({
         where: {
             mood: req.params.moods
         }
     })
-    console.log("Line 73, api-routes.js")
+    console.log("Line 73, api-routes.js") // THIS GOT HIT
 
         const multiplePokemon = [];
         await findPokemon.map(async function(pokename) { //the map ensures that one pokemon name is searched for at a time
             const value = pokename.dataValues.name; 
             multiplePokemon.push(await apiCall(value)); //pushes the pokemon from corresponding api call 
         })
-        console.log(multiplePokemon, "Line 80, api-routes.js")
+        console.log(multiplePokemon, "Line 80, api-routes.js") //returned an empty []
 
         return res.json(multiplePokemon);
     });
 
 //Function for finding Pokemon sprites, names + descriptions
 async function apiCall(multiplePokemon) { 
-    console.log("Line 87, api-routes.js")
+    console.log("Line 87, api-routes.js") // NOT HIT
 
     const pokeArray = {[multiplePokemon]: {}}; //Making an object with the key of the name, and the value is an empty object to be filled with sprite and description
     //Pokemon Sprites Call
