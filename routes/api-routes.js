@@ -33,7 +33,7 @@ module.exports = function(app) {
     }).then(function() { 
         res.redirect("/login"); //take them to login page
       })
-      .catch(function(err) { //otherwise throw an error
+      .catch(function(err) { 
         res.status(401).json(err);
       });
   });
