@@ -66,3 +66,10 @@ body {
             transform: scaleX(1);
   }
   /*# sourceMappingURL=main.css.map */
+
+  #addelement {
+    margin-top: 25px;
+    color: white;
+    justify-content: center;
+    text-align: center;
+}

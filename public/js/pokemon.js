@@ -15,8 +15,8 @@ $(".mood-selector").on("click", function(evt) {
              let sprite = pokemonInfo.sprite;
  
              let pokeDisplay = '<div>';
-                 pokeDisplay += '<p>' + 'Name: ' + name + '</p>';
-                 pokeDisplay += '<p>' + 'Description: ' + desc + '</p>';
+                 pokeDisplay += '<p>' + '<b>' + 'Name: ' + '</b>' + name  + '</p>';
+                 pokeDisplay += '<p>' + '<b>' +'Description: ' + '</b>' + desc  + '</p>';
                  pokeDisplay += '<img src="'+ sprite + '">';
                  pokeDisplay += '</div>';
  
