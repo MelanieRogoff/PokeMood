@@ -3,27 +3,42 @@ body {
   background-size: 400% 400%;
 }
 
-.appendedHTML {
+#addelement {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   text-align: center;
 }
 
-.container {
-  display: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+#addelement p {
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 0px;
+}
+
+#addelement img {
+  border: solid;
+  border-color: white;
+  border-radius: 5px;
 }
 
 .card-header {
   text-align: center;
   background: red;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  text-align: center;
 }
 
 .card-body {
-  background: white;
+  background: red;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  text-align: center;
 }
 
 .overlay {

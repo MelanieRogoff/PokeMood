@@ -12,25 +12,40 @@ $colors: (
 body {
     background: map-get($colors, gradient1);
     background-size: 400% 400%;
+    
 }
 
-.appendedHTML {
+#addelement {
     justify-content: center;
     text-align: center;
-}
+    // border: solid !important;
+    // border-color: white !important;
+    p {
+        color: white;
+        padding-top: 10px;
+        padding-bottom: 0px;
+    }
 
-.container {
-    display: center;
-    justify-content: center;
+    img {
+        border: solid;
+        border-color: white;
+        border-radius: 5px;
+    }
 }
 
 .card-header {
     text-align: center;
     background: red;
+    justify-content: center;
+    text-align: center;
+    text-align: center;
 }
 
 .card-body {
-    background: white;
+    background: red;
+    justify-content: center;
+    text-align: center;
+    text-align: center;
 }
 
 .overlay {
