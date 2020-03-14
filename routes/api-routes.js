@@ -10,14 +10,14 @@ module.exports = function(app) {
         where: {
               email: req.body.userData.email,
         }
-        }).then(function(User) {
-            if (User.validPassword(req.body.userData.password)) {
+        }).then(function(dbUser) { //needed to change the parameter because of scoping
+            if (dbUser.validPassword(req.body.userData.password)) {
                 db.User.update({ token: string }, { //update token 
                     where: {
-                        id: User.id //do User.id because we're in the db
+                        id: dbUser.id //do User.id because we're in the db
                     }
                 }).then(function() { //don't put User here because of scoping -- can't have the same parameter. By making this param empty, it grabs User, which is what we want
-                    return res.json(User) //send user info back to frontend
+                    return res.json(dbUser) //send user info back to frontend
                 });
                 }
         });
