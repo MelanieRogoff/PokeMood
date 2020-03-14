@@ -12,11 +12,10 @@ $colors: (
 body {
     background: map-get($colors, gradient1);
     background-size: 400% 400%;
-    
 }
 
 .btn {
-    border-color: yellow;
+    border-color: black;
     background-color: white;
 }
 
@@ -27,8 +26,6 @@ a:hover:not(.active) {
 #addelement {
     justify-content: center;
     text-align: center;
-    // border: solid !important;
-    // border-color: white !important;
     p {
         color: white;
         padding-top: 10px;
