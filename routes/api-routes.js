@@ -10,7 +10,8 @@ module.exports = function(app) {
         where: {
               email: req.body.userData.email,
         }
-        }).then(function(dbUser) { //needed to change the parameter because of scoping
+        }).then(function(dbUser) {
+            console.log(res.json(dbUser), "CONSOLE LOG HERE");
             if (dbUser.validPassword(req.body.userData.password)) {
                 db.User.update({ token: string }, { //update token 
                     where: {
