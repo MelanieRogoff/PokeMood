@@ -68,8 +68,17 @@ body {
   /*# sourceMappingURL=main.css.map */
 
   #addelement {
-    margin-top: 25px;
-    color: white;
     justify-content: center;
     text-align: center;
-}
+    color: white;
+  }
+    p {
+        padding-top: 10px;
+        padding-bottom: 0px;
+    }
+    img {
+        border: solid;
+        border-color: white;
+        border-radius: 5px;
+    }
+  

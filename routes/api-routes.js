@@ -12,7 +12,7 @@ module.exports = function(app) {
         }
         }).then(function(User) {
             if (User.validPassword(req.body.userData.password)) {
-                db.User.update({ token: string }, { //update user's token - updates usually return true or false
+                db.User.update({ token: string }, { //update token 
                     where: {
                         id: User.id //do User.id because we're in the db
                     }
