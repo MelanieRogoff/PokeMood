@@ -3,6 +3,15 @@ body {
   background-size: 400% 400%;
 }
 
+.btn {
+  border-color: yellow;
+  background-color: white;
+}
+
+a:hover:not(.active) {
+  background-color: yellow;
+}
+
 #addelement {
   -webkit-box-pack: center;
       -ms-flex-pack: center;

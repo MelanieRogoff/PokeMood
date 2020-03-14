@@ -15,6 +15,15 @@ body {
     
 }
 
+.btn {
+    border-color: yellow;
+    background-color: white;
+}
+
+a:hover:not(.active) {
+    background-color: yellow;
+}
+
 #addelement {
     justify-content: center;
     text-align: center;
