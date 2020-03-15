@@ -8,6 +8,10 @@ $(".mood-selector").on("click", function(evt) {
          $('#addelement').empty();
          for (let i = 0; i < data.length; i++) {
              const pokemon = data[i];
+             let array = [];
+             array.push(pokemon);
+             array[Math.floor(Math.random() * array.length)];
+
             
              let name = Object.keys(pokemon)[0];
              let pokemonInfo = pokemon[name];
