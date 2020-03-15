@@ -12,7 +12,6 @@ $(".mood-selector").on("click", function(evt) {
              array.push(pokemon);
              array[Math.floor(Math.random() * array.length)];
 
-            
              let name = Object.keys(pokemon)[0];
              let pokemonInfo = pokemon[name];
              let desc = pokemonInfo.description;
