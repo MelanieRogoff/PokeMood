@@ -74,7 +74,7 @@ async function apiCall(multiplePokemon) {
 
     //Pokemon Description Call
     let description = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${multiplePokemon.toLowerCase()}`) 
-    pokeArray[multiplePokemon].description = await description.data.flavor_text_entries[54].flavor_text  //this assigns the corresponding description to the specific pokemon name 
+    pokeArray[multiplePokemon].description = await description.data.flavor_text_entries[2].flavor_text  //this assigns the corresponding description to the specific pokemon name 
     return await pokeArray;
 }
 }
